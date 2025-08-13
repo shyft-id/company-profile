@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'Shyft - AI-Powered Business Automation',
+      title: 'Shyft - Helping teams shift to AI, one system at a time',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
