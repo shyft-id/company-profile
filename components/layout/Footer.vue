@@ -38,8 +38,12 @@
             <p>shyftid@gmail.com</p>
           </div>
           <div class="flex space-x-4 mt-4">
-            <a href="https://www.instagram.com/shyft.id/" target="_blank" class="hover:text-white transition-colors">{{ $t('footer.social.instagram') }}</a>
-            <a href="https://www.linkedin.com/company/shyft-id" target="_blank" class="hover:text-white transition-colors">{{ $t('footer.social.linkedin') }}</a>
+            <a href="https://www.instagram.com/shyft.id/" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity" :aria-label="$t('footer.social.instagram')">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/instagram.svg" alt="Instagram" width="24" height="24" loading="lazy" class="filter invert" />
+            </a>
+            <a href="https://www.linkedin.com/company/shyft-id" target="_blank" rel="noopener noreferrer" class="hover:opacity-80 transition-opacity" :aria-label="$t('footer.social.linkedin')">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" loading="lazy" class="filter invert" />
+            </a>
           </div>
         </div>
       </div>
