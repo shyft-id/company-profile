@@ -1,8 +1,7 @@
 {
   "header": {
     "services": "Solusi",
-    "about": "Tentang Kami",
-    "features": "Fitur",
+    "ourWorks": "Karya Kami",
     "contact": "Kontak Kami"
   },
   "hero": {
@@ -23,14 +22,14 @@
         "title": "Chatbot & Asisten Virtual AI",
         "description": "Tingkatkan pengalaman pelanggan dengan dukungan berbasis AI 24/7."
       },
-      "marketing": {
-        "title": "Pemasaran AI yang Dipersonalisasi",
-        "description": "Kirim pesan yang lebih cerdas pada saat yang tepat dengan AI."
-      },
-      "crm": {
-        "title": "Otomatisasi CRM",
-        "description": "Tangkap, kualifikasi, dan rutekan prospek secara otomatis hanya pada prospek yang tepat."
-      },
+      "custom_software": {
+          "title": "Aplikasi Perangkat Lunak Kustom",
+          "description": "Bangun solusi perangkat lunak yang disesuaikan dengan tujuan bisnis Anda."
+        },
+        "it_consulting": {
+          "title": "Konsultasi TI",
+          "description": "Dapatkan panduan ahli untuk menyelesaikan tantangan teknologi dan mendorong inovasi."
+        },
       "integrations": {
         "title": "Integrasi AI Kustom",
         "description": "Integrasikan AI dengan mulus ke dalam sistem bisnis Anda yang sudah ada."
@@ -106,10 +105,9 @@
     },
     "company": {
       "title": "Perusahaan",
-      "case_studies": "Studi Kasus",
-      "pricing": "Harga",
-      "contact": "Kontak",
-      "blog": "Blog"
+      "services": "Solusi",
+      "ourWorks": "Karya Kami",
+      "contact": "Kontak Kami"
     },
     "contact": {
       "title": "Kontak"

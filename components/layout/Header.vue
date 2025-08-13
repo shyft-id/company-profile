@@ -187,9 +187,8 @@ const isLanguageDropdownOpen = ref(false);
 
 const navItems = [
   { name: 'header.services', href: '#services' },
-  { name: 'header.about', href: '#about' },
-  { name: 'header.features', href: '#features' },
-{ name: 'header.contact', href: '#contact' },
+  { name: 'header.ourWorks', href: '#ourWorks' },
+  { name: 'header.contact', href: '#contact' }
 ];
 
 const handleScroll = () => {

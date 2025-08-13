@@ -8,44 +8,43 @@
             alt="logo"
             class="h-[28px] w-auto object-cover mb-[10px]"
           >
-          <p class="text-gray-400">{{ $t('footer.company_description') }}</p>
+          <p>{{ $t('footer.company_description') }}</p>
         </div>
         
         <div>
           <h4 class="font-normal mb-4">{{ $t('footer.services.title') }}</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.services.workflow_automation') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.services.ai_chatbots') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.services.crm_automation') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.services.custom_integrations') }}</a></li>
+          <ul class="space-y-2">
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.services.workflow_automation') }}</a></li>
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.services.ai_chatbots') }}</a></li>
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.services.custom_software') }}</a></li>
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.services.it_consulting') }}</a></li>
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.services.custom_integrations') }}</a></li>
           </ul>
         </div>
         
         <div>
           <h4 class="font-normal mb-4">{{ $t('footer.company.title') }}</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.company.case_studies') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.company.pricing') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.company.contact') }}</a></li>
-            <li><a href="#" class="hover:text-white transition-colors">{{ $t('footer.company.blog') }}</a></li>
+          <ul class="space-y-2">
+            <li><a href="#services" @click.prevent="handleScrollToSection('services')" class="hover:text-white transition-colors">{{ $t('footer.company.services') }}</a></li>
+            <li><a href="#ourWorks" @click.prevent="handleScrollToSection('ourWorks')" class="hover:text-white transition-colors">{{ $t('footer.company.ourWorks') }}</a></li>
+            <li><a href="#contact" @click.prevent="handleScrollToSection('contact')" class="hover:text-white transition-colors">{{ $t('footer.company.contact') }}</a></li>
           </ul>
         </div>
         
         <div>
           <h4 class="font-normal mb-4">{{ $t('footer.contact.title') }}</h4>
-          <div class="space-y-2 text-gray-400">
+          <div class="space-y-2">
             <!-- <p>+1234 567 89</p> -->
             <p>shyftid@gmail.com</p>
           </div>
           <div class="flex space-x-4 mt-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">{{ $t('footer.social.twitter') }}</a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">{{ $t('footer.social.instagram') }}</a>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors">{{ $t('footer.social.linkedin') }}</a>
+            <a href="https://www.instagram.com/shyft.id/" target="_blank" class="hover:text-white transition-colors">{{ $t('footer.social.instagram') }}</a>
+            <a href="https://www.linkedin.com/company/shyft-id" target="_blank" class="hover:text-white transition-colors">{{ $t('footer.social.linkedin') }}</a>
           </div>
         </div>
       </div>
       
-      <div class="border-t border-gray-400 mt-8 pt-8 text-center text-gray-400">
+      <div class="border-t border-gray-400 mt-8 pt-8 text-center">
         <p>{{ $t('footer.copyright') }}</p>
       </div>
     </div>
@@ -54,6 +53,18 @@
 
 <script setup>
   import logoWhite from '~/assets/images/logo-white.png'
+
+  const handleScrollToSection = (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      const headerOffset = 0
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      })
+    }
+  }
 </script>
 
 <style scoped>

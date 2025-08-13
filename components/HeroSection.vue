@@ -7,14 +7,14 @@
     <div class="container-max relative z-10 mt-12">
       <!-- Content -->
       <div class="max-w-[1200px] mx-auto px-4">
-        <h1 class="text-4xl md:text-6xl lg:text-[98px] leading-tight text-white mb-8">
+        <h1 class="text-4xl md:text-6xl lg:text-[113px] leading-tight text-white mb-8 hero-title">
           {{ $t('hero.title') }}
         </h1>
         <p class="text-md md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
           {{ $t('hero.subtitle') }}
         </p>
         <div class="flex justify-center">
-          <button class="hero-cta flex items-center gap-3 px-8 py-4 rounded-full font-medium text-white text-lg shadow-xl bg-gradient-to-r from-[#1A56EE] to-[#4FC3F7] hover:scale-105 transition-transform">
+          <button @click.prevent="handleScrollToSection('contact')" class="hero-cta flex items-center gap-3 px-8 py-4 rounded-full font-medium text-white text-lg shadow-xl bg-gradient-to-r from-[#1A56EE] to-[#4FC3F7] hover:scale-105 transition-transform">
             {{ $t('hero.cta') }}
           </button>
         </div>
@@ -29,6 +29,18 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const heroSection = ref(null)
+
+const handleScrollToSection = (id) => {
+  const element = document.getElementById(id)
+  if (element) {
+    const headerOffset = 0
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY
+    window.scrollTo({
+      top: elementPosition - headerOffset,
+      behavior: 'smooth'
+    })
+  }
+}
 
 onMounted(() => {
   if (process.client) {
@@ -92,5 +104,12 @@ onMounted(() => {
   background: radial-gradient(circle at -9% 22%, #1A56EE 0%, transparent 35%),
             radial-gradient(circle at 100% 22%, #1A56EE 0%, transparent 35%),
             linear-gradient(to bottom, #010319 0%, #010319 40%, #010319 70%, #010319 100%);
+}
+
+@media screen and (min-width: 768px) {
+  .hero-title {
+    letter-spacing: -5px;
+  }
+ 
 }
 </style>

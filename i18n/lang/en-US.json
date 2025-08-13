@@ -1,8 +1,7 @@
 {
   "header": {
     "services": "Services",
-    "about": "About Us",
-    "features": "Features",
+    "ourWorks": "Our Works",
     "contact": "Contact Us"
   },
   "hero": {
@@ -23,13 +22,13 @@
         "title": "AI Chatbots & Virtual Assistants",
         "description": "Enhance customer experience with 24/7 AI-driven support."
       },
-      "marketing": {
-        "title": "Personalized AI Marketing",
-        "description": "Send smarter messages at the right moment with AI."
+      "custom_software": {
+        "title": "Custom Software Application",
+        "description": "Build tailored software solutions that align with your business goals."
       },
-      "crm": {
-        "title": "CRM Automation",
-        "description": "Capture, qualify, and route leads focuses only on the right prospects automatically."
+      "it_consulting": {
+        "title": "IT Consulting",
+        "description": "Get expert guidance to solve complex tech challenges and drive innovation."
       },
       "integrations": {
         "title": "Custom AI Integrations",
@@ -101,15 +100,15 @@
       "title": "Services",
       "workflow_automation": "Workflow Automation",
       "ai_chatbots": "AI Chatbots",
-      "crm_automation": "CRM Automation",
-      "custom_integrations": "Custom Integrations"
+      "custom_software": "Custom Software Application",
+      "it_consulting": "IT Consulting",
+      "custom_integrations": "Custom AI Integrations"
     },
     "company": {
       "title": "Company",
-      "case_studies": "Case Studies",
-      "pricing": "Pricing",
-      "contact": "Contact",
-      "blog": "Blog"
+      "services": "Services",
+      "ourWorks": "Our Works",
+      "contact": "Contact Us"
     },
     "contact": {
       "title": "Contact"

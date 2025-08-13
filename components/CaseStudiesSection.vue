@@ -1,5 +1,5 @@
 <template>
-  <section ref="caseStudiesSection" class="section-padding bg-[#010319]">
+  <section id="ourWorks" ref="caseStudiesSection" class="section-padding bg-[#010319]">
     <div class="max-w-[1200px] mx-auto">
       <h2 class="text-4xl font-normal text-center mb-12">
         <span class="case-studies-title-white">{{ $t('case_studies.title') }}</span>

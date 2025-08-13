@@ -1,5 +1,5 @@
 <template>
-  <section ref="solutionsSection" class="solutions-section bg-[#010319]">
+  <section id="services" ref="solutionsSection" class="solutions-section bg-[#010319]">
     <div class="max-w-[1200px] mx-auto px-4">
       <div class="solutions-header">
         <div class="flex-shrink-0">
@@ -32,15 +32,15 @@
         <div class="solution-card">
           <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Personalized AI Marketing" class="solution-img" />
           <div class="solution-content">
-            <h3>{{ $t('solutions.cards.marketing.title') }}</h3>
-            <p>{{ $t('solutions.cards.marketing.description') }}</p>
+            <h3>{{ $t('solutions.cards.custom_software.title') }}</h3>
+            <p>{{ $t('solutions.cards.custom_software.description') }}</p>
           </div>
         </div>
         <div class="solution-card">
           <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="CRM Automation" class="solution-img" />
           <div class="solution-content">
-            <h3>{{ $t('solutions.cards.crm.title') }}</h3>
-            <p>{{ $t('solutions.cards.crm.description') }}</p>
+            <h3>{{ $t('solutions.cards.it_consulting.title') }}</h3>
+            <p>{{ $t('solutions.cards.it_consulting.description') }}</p>
           </div>
         </div>
         <div class="solution-card">
