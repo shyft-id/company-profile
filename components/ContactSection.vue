@@ -16,9 +16,32 @@
       <!-- Right Column: Form -->
       <div class="form bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
         <form @submit.prevent="submitForm" class="space-y-4 md:space-y-6">
+          <Transition
+            enter-active-class="transition-opacity duration-300"
+            enter-from-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="transition-opacity duration-200"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+          >
+            <div
+              v-if="toast.visible"
+              :class="[
+                'flex items-center gap-2 px-4 py-3 rounded-xl border text-sm',
+                toast.type === 'success'
+                  ? 'bg-emerald-500/10 text-emerald-100 border-emerald-500/30'
+                  : 'bg-rose-500/10 text-rose-100 border-rose-500/30'
+              ]"
+            >
+              <span class="font-medium">
+                {{ toast.message }}
+              </span>
+            </div>
+          </Transition>
           <div>
             <label for="name" class="block text-white text-sm font-medium mb-2">{{ $t('contact.form.name') }}</label>
             <input 
+              v-model="form.name"
               type="text" 
               id="name" 
               placeholder="Jane Smith"
@@ -27,7 +50,8 @@
           </div>
           <div>
             <label for="email" class="block text-white text-sm font-medium mb-2">{{ $t('contact.form.email') }}</label>
-            <input 
+            <input
+              v-model="form.email"
               type="email" 
               id="email" 
               placeholder="mail@site.com"
@@ -35,8 +59,19 @@
             >
           </div>
           <div>
+            <label for="phoneNumber" class="block text-white text-sm font-medium mb-2">{{ $t('contact.form.phoneNumber') }}</label>
+            <input
+              v-model="form.phoneNumber"
+              type="text" 
+              id="phoneNumber" 
+              placeholder="+628XXXXXXX"
+              class="w-full bg-[#181A2F] text-white px-4 py-3 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+          </div>
+          <div>
             <label for="message" class="block text-white text-sm font-medium mb-2">{{ $t('contact.form.message') }}</label>
-            <textarea 
+            <textarea
+              v-model="form.message"
               id="message" 
               rows="4" 
               placeholder="Your message"
@@ -50,9 +85,11 @@
             </p>
             <button 
               type="submit" 
-              class="bg-gradient-to-r from-[#1A56EE] to-[#4FC3F7] hover:opacity-90 hover:scale-105 text-white font-semibold py-3 px-8 md:px-10 rounded-full transition-all duration-300 order-1 md:order-2 w-full md:w-auto shadow-lg"
+              class="bg-gradient-to-r from-[#1A56EE] to-[#4FC3F7] hover:opacity-90 hover:scale-105 text-white font-semibold py-3 px-8 md:px-10 rounded-full transition-all duration-300 order-1 md:order-2 w-full md:w-auto shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+              :disabled="isSubmitting"
+              :aria-busy="isSubmitting"
             >
-              {{ $t('contact.form.submit') }}
+              {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
             </button>
           </div>
         </form>
@@ -63,13 +100,14 @@
 
 <script setup>
 // Basic script setup for form handling
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const form = ref({
   name: '',
   email: '',
+  phoneNumber: '',
   message: '',
 });
 
@@ -78,14 +116,59 @@ const contactLabel = ref(null);
 const contactTypewriterText = ref('');
 const contactHasAnimated = ref(false);
 const contactFullText = '[ CONTACT US ]';
+const isSubmitting = ref(false);
+const toast = ref({
+  visible: false,
+  type: 'success',
+  message: ''
+});
+const { t } = useI18n();
+let toastTimer = null;
 
-const submitForm = () => {
-  // You can add your form submission logic here
-  console.log('Form submitted:', form.value);
-  // Example: Reset form after submission
-  // form.value.name = '';
-  // form.value.email = '';
-  // form.value.message = '';
+const showToast = (type, message) => {
+  toast.value = {
+    visible: true,
+    type,
+    message
+  };
+
+  if (toastTimer) {
+    clearTimeout(toastTimer);
+  }
+
+  toastTimer = setTimeout(() => {
+    toast.value.visible = false;
+  }, 4000);
+};
+
+const submitForm = async () => {
+  if (isSubmitting.value) return;
+
+  isSubmitting.value = true;
+
+  try {
+    const res = await $fetch('https://n8n-shyft.aliirsyaadn.com/webhook/leads', {
+      method: 'POST',
+      body: form.value, // send form data
+      headers: {
+        Authorization: 'Basic ' + btoa('shyft:shyftbasicpassword2000')
+      }
+    })
+
+    console.log('SUCCESS', res)
+    showToast('success', t('contact.form.successToast'));
+    form.value = {
+      name: '',
+      email: '',
+      phoneNumber: '',
+      message: '',
+    };
+  } catch (err) {
+    console.error('ERROR', err)
+    showToast('error', t('contact.form.errorToast'));
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 
 const startContactTypewriter = () => {
@@ -140,6 +223,12 @@ onMounted(() => {
       },
       '-=0.5'
     );
+  }
+});
+
+onBeforeUnmount(() => {
+  if (toastTimer) {
+    clearTimeout(toastTimer);
   }
 });
 </script>

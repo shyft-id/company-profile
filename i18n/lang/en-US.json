@@ -89,9 +89,13 @@
     "form": {
       "name": "Name",
       "email": "Email",
+      "phoneNumber": "Phone Number",
       "message": "Message",
       "terms": "By submitting, you agree to our Terms and Privacy Policy.",
-      "submit": "Submit"
+      "submit": "Submit",
+      "sending": "Sending...",
+      "successToast": "Thanks! We received your message and will reach out soon.",
+      "errorToast": "Sorry, something went wrong. Please try again."
     }
   },
   "footer": {

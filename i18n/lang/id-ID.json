@@ -89,9 +89,13 @@
     "form": {
       "name": "Nama",
       "email": "Email",
+      "phoneNumber": "Nomor Telepon",
       "message": "Pesan",
       "terms": "Dengan mengirimkan, Anda menyetujui Persyaratan dan Kebijakan Privasi kami.",
-      "submit": "Kirim"
+      "submit": "Kirim",
+      "sending": "Mengirim...",
+      "successToast": "Terima kasih! Pesan Anda sudah kami terima.",
+      "errorToast": "Maaf, terjadi kesalahan. Silakan coba lagi."
     }
   },
   "footer": {
