@@ -147,7 +147,7 @@ const submitForm = async () => {
   isSubmitting.value = true;
 
   try {
-    const res = await $fetch('https://n8n-shyft.aliirsyaadn.com/webhook/leads', {
+    const res = await $fetch('https://n8n.shyft.id/webhook/leads', {
       method: 'POST',
       body: form.value, // send form data
       headers: {
